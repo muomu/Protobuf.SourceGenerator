@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Protobuf.SourceGenerator.Runtime/Protobuf.SourceGenerator.Runtime.csproj" />
+    <Project Path="src/Protobuf.SourceGenerator/Protobuf.SourceGenerator.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Protobuf.SourceGenerator.Tests/Protobuf.SourceGenerator.Tests.csproj" />
+  </Folder>
+</Solution>
