@@ -72,7 +72,7 @@ namespace Protobuf.SourceGenerator.Runtime
 
         public void WriteMessage<T>(int fieldNumber, T value) where T : IProtobufSerializable
         {
-            if (value == null) return;
+            if (value is null) return;
             using (var ms = new MemoryStream())
             {
                 value.WriteTo(ms);

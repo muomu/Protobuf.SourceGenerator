@@ -110,7 +110,7 @@ namespace Protobuf.SourceGenerator.Runtime
                 result |= (ulong)(b & 0x7F) << shift;
                 if ((b & 0x80) == 0) break;
                 shift += 7;
-                if (shift >= 64) throw new InvalidOperationException("Varint too long");
+                if (shift >= 64) throw new InvalidOperationException("Varint exceeds maximum length (more than 10 bytes): invalid protobuf wire format");
             }
             return result;
         }
