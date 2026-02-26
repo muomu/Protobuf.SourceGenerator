@@ -178,11 +178,16 @@ namespace Protobuf.SourceGenerator
             switch (typeName)
             {
                 case "int":
-                case "int?":
                     sb.AppendLine($"{pad}if ({memberName} != 0) writer.WriteInt32({fieldNum}, {memberName});");
+                    break;
+                case "int?":
+                    sb.AppendLine($"{pad}if ({memberName}.HasValue && {memberName}.Value != 0) writer.WriteInt32({fieldNum}, {memberName}.Value);");
                     break;
                 case "long":
                     sb.AppendLine($"{pad}if ({memberName} != 0L) writer.WriteInt64({fieldNum}, {memberName});");
+                    break;
+                case "long?":
+                    sb.AppendLine($"{pad}if ({memberName}.HasValue && {memberName}.Value != 0L) writer.WriteInt64({fieldNum}, {memberName}.Value);");
                     break;
                 case "bool":
                     sb.AppendLine($"{pad}if ({memberName}) writer.WriteBool({fieldNum}, {memberName});");
@@ -240,8 +245,10 @@ namespace Protobuf.SourceGenerator
             switch (typeName)
             {
                 case "int":
+                case "int?":
                     readExpr = "reader.ReadInt32()"; break;
                 case "long":
+                case "long?":
                     readExpr = "reader.ReadInt64()"; break;
                 case "bool":
                     readExpr = "reader.ReadBool()"; break;
